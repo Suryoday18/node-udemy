@@ -20,7 +20,9 @@ const routes = (req, res) => {
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split('=')[1]
             console.log({parsedBody, message});
-            return res.end()
+            res.setHeader('Location', '/')
+            res.end()
+            // return res.end()
         })
     }
     else if(req.url === '/users'){
