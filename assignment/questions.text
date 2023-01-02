@@ -1,0 +1,6 @@
+1. Spin up a node js driven server.
+2. Handle two routes: '/' and 'users'
+    . return some greeting text on '/'
+    . return a list of dummy users
+3. Add a form with "username" <input> to the page '/' and submit a post request '/create-user' upon a button click
+4. Add the '/create-user' route and parse the incoming data(i.e the username) and log the data   
