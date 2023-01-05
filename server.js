@@ -1,10 +1,40 @@
 const http = require('http')
+const bodyParser = require('body-parser')
 
-const routes = require('./route')
+const path = require('path')
 
-console.log(routes.someText);
+const express = require('express')
 
-const server = http.createServer(routes.handler)
+const app = express()
 
-server.listen(5000)
+app.use(bodyParser.urlencoded({extended: false}))
 
+const adminRoutes = require('./routes/admin')
+const shopRoutes = require('./routes/shop')
+
+// app.use('/', (req, res, next) => {
+//     console.log('This always called');
+//     next()
+// })
+
+// app.use('/add-product', (req, res, next) => {
+//     res.send('<form action="/product" method="POST"><input type="text" name="title"/><button type="submit">Submit</button></form>')
+// })
+
+// app.post('/product', (req, res, next) => {
+//     console.log(req.body);
+//     res.redirect('/')
+// })
+app.use('/admin', adminRoutes)
+app.use(shopRoutes)
+
+// app.use('/',(req, res, next) => {
+//     res.send('<h2>Hello bodyparser</h2>') 
+// })
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'))
+})
+
+
+app.listen(5000)
