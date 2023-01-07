@@ -1,0 +1,3 @@
+create a npm project and install express(Nodemon if you want)
+Create an express.js app which serves two html files (of your choice/with your content) for '/' and '/users'
+add some static(.js or .css) to your project that should be required by at least one of your html files
